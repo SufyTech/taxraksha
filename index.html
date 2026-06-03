@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kya Mujhe Income Tax Notice Aayega? Free Checker — TaxRaksha</title>
+<meta name="description" content="4 sawaalon mein jaano ki aapko income tax notice aa sakta hai ya nahi. Actual IT Dept. triggers pe based. Bilkul free.">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#F7F6F2;min-height:100vh;display:flex;flex-direction:column;align-items:center}
+.topbar{width:100%;background:#fff;border-bottom:1px solid #EBEBEB;padding:14px 20px;display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:8px}
+.logo-icon{width:30px;height:30px;background:#1B4332;border-radius:8px;display:flex;align-items:center;justify-content:center}
+.logo-icon svg{width:16px;height:16px;fill:#fff}
+.logo-name{font-size:16px;font-weight:700;color:#1B4332}
+.logo-tag{font-size:10px;color:#888;font-weight:400}
+.trust-pill{font-size:11px;background:#E8F5E9;color:#2E7D32;padding:4px 10px;border-radius:20px;font-weight:500}
+.hero{width:100%;background:#fff;padding:28px 20px 24px;border-bottom:1px solid #EBEBEB;text-align:center}
+.hero-eyebrow{font-size:12px;color:#888;margin-bottom:8px;letter-spacing:.3px}
+.hero-title{font-size:22px;font-weight:700;color:#111;line-height:1.3;margin-bottom:8px}
+.hero-title span{color:#1B4332}
+.hero-sub{font-size:14px;color:#555;line-height:1.6;margin-bottom:16px}
+.trust-row{display:flex;justify-content:center;gap:16px;flex-wrap:wrap}
+.trust-item{display:flex;align-items:center;gap:5px;font-size:12px;color:#555}
+.trust-dot{width:6px;height:6px;background:#1B4332;border-radius:50%}
+.main{width:100%;max-width:480px;padding:20px 16px}
+.step-indicator{display:flex;align-items:center;gap:8px;margin-bottom:20px}
+.step-num{font-size:12px;color:#888}
+.step-bar{flex:1;height:3px;background:#E8E8E0;border-radius:2px;overflow:hidden}
+.step-fill{height:100%;background:#1B4332;border-radius:2px;transition:width .4s}
+.card{background:#fff;border-radius:16px;border:1px solid #EBEBEB;overflow:hidden;margin-bottom:16px}
+.card-top{padding:20px 20px 0}
+.q-context{font-size:12px;color:#888;margin-bottom:6px;display:flex;align-items:center;gap:5px}
+.q-context-dot{width:5px;height:5px;background:#1B4332;border-radius:50%}
+.q-text{font-size:18px;font-weight:700;color:#111;line-height:1.35;margin-bottom:4px}
+.q-hint{font-size:12px;color:#888;margin-bottom:16px;line-height:1.5}
+.opts{padding:0 12px 12px;display:flex;flex-direction:column;gap:8px}
+.opt{display:flex;align-items:center;gap:12px;padding:13px 14px;border:1.5px solid #EBEBEB;border-radius:12px;cursor:pointer;background:#FAFAF8;user-select:none;transition:all .15s}
+.opt:active{transform:scale(.99)}
+.opt.selected{border-color:#1B4332;background:#F0F7F2}
+.opt-icon{width:36px;height:36px;border-radius:10px;background:#F0EEE8;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.opt.selected .opt-icon{background:#D4EDDA}
+.opt-body{flex:1}
+.opt-label{font-size:14px;font-weight:500;color:#111;line-height:1.3}
+.opt-sub{font-size:12px;color:#888;margin-top:2px}
+.opt-check{width:20px;height:20px;border-radius:50%;border:1.5px solid #DDD;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .15s}
+.opt.selected .opt-check{background:#1B4332;border-color:#1B4332}
+.checkmark{display:none;width:10px;height:10px}
+.opt.selected .checkmark{display:block}
+.nav-row{display:flex;gap:10px;padding:0 16px 20px}
+.btn-back{padding:13px 16px;background:#fff;border:1.5px solid #EBEBEB;border-radius:12px;font-size:14px;cursor:pointer;color:#555;font-weight:500}
+.btn-next{flex:1;padding:13px;background:#1B4332;color:#fff;border:none;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer}
+.btn-next:disabled{opacity:.35;cursor:not-allowed}
+.result-hero{padding:24px 20px 20px;text-align:center;border-bottom:1px solid #EBEBEB}
+.result-icon{width:64px;height:64px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;font-size:28px}
+.result-icon.green{background:#E8F5E9}
+.result-icon.yellow{background:#FFF8E1}
+.result-icon.red{background:#FFEBEE}
+.result-label{font-size:12px;font-weight:700;letter-spacing:.5px;margin-bottom:6px}
+.result-label.green{color:#2E7D32}
+.result-label.yellow{color:#E65100}
+.result-label.red{color:#C62828}
+.result-title{font-size:19px;font-weight:700;color:#111;margin-bottom:6px;line-height:1.3}
+.result-sub{font-size:13px;color:#666;line-height:1.6}
+.flags-section{padding:16px 20px}
+.flags-heading{font-size:11px;font-weight:700;color:#888;letter-spacing:.5px;margin-bottom:10px}
+.flag{display:flex;gap:10px;padding:13px;border-radius:12px;margin-bottom:8px}
+.flag.warn{background:#FFF8E1;border:1px solid #FFECB3}
+.flag.ok{background:#F0F7F2;border:1px solid #C8E6C9}
+.flag.info{background:#E3F2FD;border:1px solid #BBDEFB}
+.flag-icon{font-size:16px;flex-shrink:0;margin-top:1px}
+.flag-text{font-size:13px;line-height:1.55;color:#333}
+.flag-text strong{font-weight:600;color:#111}
+.gate-section{margin:0 16px 16px;background:#F7F6F2;border-radius:14px;padding:18px}
+.gate-header{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.gate-header-icon{width:36px;height:36px;background:#1B4332;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+.gate-title{font-size:15px;font-weight:700;color:#111}
+.gate-sub{font-size:12px;color:#666;margin-top:2px}
+.gate-input{width:100%;padding:12px 14px;border:1.5px solid #DDD;border-radius:10px;font-size:14px;background:#fff;color:#111;margin-bottom:10px;outline:none}
+.gate-input:focus{border-color:#1B4332}
+.btn-report{width:100%;padding:14px;background:#1B4332;color:#fff;border:none;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer}
+.success-card{background:#E8F5E9;border:1px solid #C8E6C9;border-radius:12px;padding:16px;text-align:center;margin-top:10px}
+.success-card p{font-size:14px;color:#2E7D32;font-weight:600}
+.success-card span{font-size:12px;color:#555;display:block;margin-top:4px}
+.restart-btn{width:100%;padding:13px;background:#fff;border:1.5px solid #EBEBEB;border-radius:12px;font-size:14px;font-weight:500;color:#555;cursor:pointer;margin-bottom:20px}
+.ca-note{margin:0 16px 24px;padding:14px;background:#fff;border:1px solid #EBEBEB;border-radius:12px;display:flex;gap:10px;align-items:flex-start}
+.ca-avatar{width:36px;height:36px;border-radius:50%;background:#1B4332;display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;color:#fff;font-weight:700}
+.ca-text{font-size:12px;color:#555;line-height:1.6}
+.ca-text strong{color:#111;font-weight:600}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="logo">
+    <div class="logo-icon">
+      <svg viewBox="0 0 24 24"><path d="M12 2L3 7v5c0 5.25 3.75 10.15 9 11.35C17.25 22.15 21 17.25 21 12V7L12 2z"/></svg>
+    </div>
+    <span class="logo-name">TaxRaksha</span><span class="logo-tag">.in</span>
+  </div>
+  <div class="trust-pill">🔒 100% Free</div>
+</div>
+
+<div class="hero" id="hero">
+  <div class="hero-eyebrow">INCOME TAX NOTICE CHECKER</div>
+  <div class="hero-title">Kya aapko <span>tax notice</span> aa sakta hai?</div>
+  <div class="hero-sub">4 simple sawaal — aur aapko pata chalega aapka risk.<br>Koi CA nahi, koi fees nahi.</div>
+  <div class="trust-row">
+    <div class="trust-item"><div class="trust-dot"></div><span>Actual IT Dept. notice triggers pe based</span></div>
+    <div class="trust-item"><div class="trust-dot"></div><span>Bilkul free, hamesha</span></div>
+    <div class="trust-item"><div class="trust-dot"></div><span>2 minute mein result</span></div>
+  </div>
+</div>
+
+<div class="main" id="main"></div>
+
+<script>
+const screens=[
+  {ctx:"Pehla sawaal",q:"Kya aapne pichle saal ITR file ki thi?",hint:"Sabse important sawaal — yahi decide karta hai notice ka chance",type:"single",
+   opts:[{icon:"✅",label:"Haan, time pe file ki",sub:"July 31 se pehle submit"},{icon:"⏰",label:"Haan, lekin late file ki",sub:"July 31 ke baad belated return"},{icon:"❌",label:"Nahi ki — bhool gaya/gayi",sub:""},{icon:"🆕",label:"Pehli baar file karunga",sub:"Is saal pehli baar"}]},
+  {ctx:"Doosra sawaal",q:"Aapki income kahan se aati hai?",hint:"Sab select karo jo aap par laagu ho",type:"multi",
+   opts:[{icon:"💼",label:"Salary / Naukri",sub:"Form 16 milti hai"},{icon:"💻",label:"Freelance / Consulting",sub:"Clients se directly"},{icon:"🏪",label:"Business / Dukaan",sub:"Apna kaam"},{icon:"🏦",label:"FD / Savings ka byaaj",sub:"Bank interest"},{icon:"📈",label:"Share / Mutual Fund",sub:"Trading ya investment"},{icon:"🏠",label:"Kiraya / Rent",sub:"Property se"}]},
+  {ctx:"Teesra sawaal",q:"Aapki poori saal ki income kitni hai?",hint:"Sirf estimate — bilkul exact hona zaroori nahi",type:"single",
+   opts:[{icon:"🟢",label:"₹0 – ₹5 lakh",sub:"Tax exemption limit ke paas"},{icon:"🟡",label:"₹5 – ₹15 lakh",sub:"Middle income bracket"},{icon:"🟠",label:"₹15 – ₹50 lakh",sub:"Upper bracket"},{icon:"🔴",label:"₹50 lakh se zyada",sub:"High income"}]},
+  {ctx:"Aakhri sawaal",q:"Kya aapne yeh kiya pichle saal?",hint:"Jo bhi hua ho sab select karo — honest raho",type:"multi",
+   opts:[{icon:"💵",label:"₹2 lakh+ cash mein kharcha kiya",sub:"Car, jewellery, kuch bhi"},{icon:"💳",label:"Credit card bill ₹1 lakh+ tha",sub:""},{icon:"🏡",label:"Property kharid ya becha",sub:"Makaan, zameen, flat"},{icon:"✈️",label:"Videsh yatra ki",sub:"Foreign trip"},{icon:"👍",label:"Kuch bhi nahi",sub:"Upar mein se koi nahin"}]}
+];
+
+let step=0,ans=[],sel=[];
+
+function calcScore(){
+  let s=0;
+  if(ans[0]===2)s+=3; else if(ans[0]===1)s+=1;
+  const i=ans[1]||[];
+  if(i.includes(1))s+=1;if(i.includes(2))s+=1;if(i.includes(4))s+=1;
+  if(ans[2]===2)s+=1;if(ans[2]===3)s+=2;
+  const t=ans[3]||[];
+  if(t.includes(0))s+=2;if(t.includes(1))s+=2;if(t.includes(2))s+=2;if(t.includes(3))s+=1;
+  return s;
+}
+
+function getFlags(){
+  const f=[],a1=ans[1]||[],a3=ans[3]||[];
+  if(ans[0]===2)f.push({t:"warn",icon:"⚠️",m:"<strong>ITR file nahi ki</strong> — yeh sabse bada red flag hai. IT Department ne 5.5 crore non-filers ko pehle hi identify kar liya hai."});
+  else if(ans[0]===1)f.push({t:"info",icon:"ℹ️",m:"<strong>Late filing hui</strong> — penalty already lag chuki. Aage July 31 se pehle file karo."});
+  if(a1.includes(3))f.push({t:"warn",icon:"⚠️",m:"<strong>FD/savings interest</strong> — ₹10,000 se zyada bank interest 'Other Sources' mein declare karna zaroori hai. TDS kata bhi ho toh bhi ITR mein dikhana padta hai."});
+  if(a1.includes(1)||a1.includes(2))f.push({t:"warn",icon:"⚠️",m:"<strong>Freelance/business income</strong> — clients ne jo TDS kata hai wo Form 26AS mein hai. Agar actual income alag dikhaya toh mismatch = automatic notice."});
+  if(a3.includes(0))f.push({t:"warn",icon:"⚠️",m:"<strong>₹2 lakh+ cash spending</strong> — yeh automatically SFT mein IT Department ko report hota hai."});
+  if(a3.includes(1))f.push({t:"warn",icon:"⚠️",m:"<strong>High credit card bill</strong> — agar declared income kam aur spending zyada, lifestyle mismatch flag hota hai."});
+  if(a3.includes(2))f.push({t:"warn",icon:"⚠️",m:"<strong>Property transaction</strong> — registrar automatically IT Department ko report karta hai. Stamp duty se kam price = notice."});
+  if(f.length===0){
+    f.push({t:"ok",icon:"✅",m:"<strong>Koi major red flag nahi mila</strong> — aapki profile clean dikh rahi hai. Bas July 31 deadline mat bhoolna."});
+    f.push({t:"info",icon:"💡",m:"<strong>Ek kaam zaroor karo:</strong> Form 26AS aur AIS income tax portal pe check karo. Free hai, 5 minute lagta hai."});
+  }
+  return f;
+}
+
+function render(){
+  const m=document.getElementById('main');
+  const h=document.getElementById('hero');
+  h.style.display=step===0?'block':'none';
+  if(step<4){
+    const s=screens[step],multi=s.type==='multi';
+    const pct=Math.round((step+1)/4*100);
+    m.innerHTML=`
+    <div class="step-indicator">
+      <span class="step-num">Sawaal ${step+1} / 4</span>
+      <div class="step-bar"><div class="step-fill" style="width:${pct}%"></div></div>
+      <span class="step-num">${pct}%</span>
+    </div>
+    <div class="card">
+      <div class="card-top">
+        <div class="q-context"><div class="q-context-dot"></div>${s.ctx}</div>
+        <div class="q-text">${s.q}</div>
+        <div class="q-hint">${multi?'✓ Ek se zyada select kar sakte ho &nbsp;|&nbsp; ':''}${s.hint}</div>
+      </div>
+      <div class="opts">
+        ${s.opts.map((o,i)=>`
+        <div class="opt${sel.includes(i)?' selected':''}" onclick="pick(${i},${multi})">
+          <div class="opt-icon">${o.icon}</div>
+          <div class="opt-body">
+            <div class="opt-label">${o.label}</div>
+            ${o.sub?`<div class="opt-sub">${o.sub}</div>`:''}
+          </div>
+          <div class="opt-check">
+            <svg class="checkmark" viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2.5" stroke="#fff" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+        </div>`).join('')}
+      </div>
+    </div>
+    <div class="nav-row">
+      ${step>0?`<button class="btn-back" onclick="goBack()">← Wapas</button>`:''}
+      <button class="btn-next" id="nxt" onclick="goNext()" ${sel.length===0?'disabled':''}>
+        ${step===3?'Mera Result Dekhein →':'Aage →'}
+      </button>
+    </div>
+    </div>`;
+  } else {
+    const sc=calcScore(),lv=sc<=2?'LOW':sc<=5?'MEDIUM':'HIGH';
+    const cfg={
+      LOW:{cl:'green',ic:'🛡️',lb:'NOTICE RISK: LOW',ti:'Acha hai! Aapka profile safe lag raha hai.',su:'Koi bada red flag nahi mila. Neeche kuch zaroori tips hain.'},
+      MEDIUM:{cl:'yellow',ic:'⚡',lb:'NOTICE RISK: MEDIUM',ti:'Dhyan do — kuch cheezein theek karni hain.',su:'Aapke answers mein 1-2 areas hain jahan galti ho sakti hai.'},
+      HIGH:{cl:'red',ic:'🚨',lb:'NOTICE RISK: HIGH',ti:'Zaroor karo — kuch actions turant lene chahiye.',su:'Aapki profile mein multiple notice triggers mile hain.'}
+    }[lv];
+    const fl=getFlags();
+    m.innerHTML=`
+    <div class="card">
+      <div class="result-hero">
+        <div class="result-icon ${cfg.cl}">${cfg.ic}</div>
+        <div class="result-label ${cfg.cl}">${cfg.lb}</div>
+        <div class="result-title">${cfg.ti}</div>
+        <div class="result-sub">${cfg.su}</div>
+      </div>
+      <div class="flags-section">
+        <div class="flags-heading">AAPKE LIYE SPECIFICALLY</div>
+        ${fl.map(f=>`<div class="flag ${f.t}"><span class="flag-icon">${f.icon}</span><span class="flag-text">${f.m}</span></div>`).join('')}
+      </div>
+    </div>
+    <div class="gate-section">
+      <div class="gate-header">
+        <div class="gate-header-icon">📄</div>
+        <div>
+          <div class="gate-title">Free 5-page detailed report</div>
+          <div class="gate-sub">Aapke answers ke hisaab se — bilkul personalised</div>
+        </div>
+      </div>
+      <div style="font-size:12px;color:#C62828;font-weight:600;margin-bottom:8px;">⏰ Aapki report 24 ghante mein expire ho jaati hai — abhi email dalo.</div>
+      <input class="gate-input" type="email" id="eml" placeholder="aapka@email.com">
+      <button class="btn-report" onclick="submitEmail()">Report Bhejo Mere Email Par →</button>
+      <div id="ok" style="display:none" class="success-card">
+        <p>✅ Report bhej di! Inbox check karein.</p>
+        <span>Spam folder bhi dekh lena</span>
+      </div>
+    </div>
+    <div style="padding:0 16px">
+      <button class="restart-btn" onclick="restart()">↩ Dobara check karein</button>
+    </div>
+    </div>`;
+  }
+  window.scrollTo(0,0);
+}
+
+function pick(i,multi){
+  if(!multi){sel=[i];}
+  else{
+    if(i===4){sel=[4];}
+    else{const ni=sel.indexOf(4);if(ni>-1)sel.splice(ni,1);const x=sel.indexOf(i);if(x>-1)sel.splice(x,1);else sel.push(i);}
+  }
+  document.querySelectorAll('.opt').forEach((e,j)=>e.classList.toggle('selected',sel.includes(j)));
+  const nb=document.getElementById('nxt');if(nb)nb.disabled=sel.length===0;
+}
+
+function goNext(){
+  if(!sel.length)return;
+  ans[step]=screens[step].type==='multi'?[...sel]:sel[0];
+  step++;sel=[];render();
+}
+
+function goBack(){step--;sel=Array.isArray(ans[step])?[...ans[step]]:[ans[step]];render();}
+
+function submitEmail(){
+  const v=document.getElementById('eml').value;
+  if(!v||!v.includes('@')){document.getElementById('eml').style.borderColor='red';return;}
+  // REPLACE THIS with your Brevo API call:
+  // fetch('https://api.brevo.com/v3/contacts',{method:'POST',headers:{'api-key':'YOUR_KEY','Content-Type':'application/json'},body:JSON.stringify({email:v,listIds:[2]})})
+  document.getElementById('ok').style.display='block';
+  document.querySelector('.btn-report').style.display='none';
+}
+
+function restart(){step=0;ans=[];sel=[];render();}
+render();
+</script>
+</body>
+</html>
