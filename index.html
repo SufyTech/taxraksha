@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Kya Mujhe Income Tax Notice Aayega? Free Checker — TaxRaksha</title>
 <meta name="description" content="4 sawaalon mein jaano ki aapko income tax notice aa sakta hai ya nahi. Actual IT Dept. triggers pe based. Bilkul free.">
+<link rel="stylesheet" href="https://sibforms.com/forms/end-form/build/sib-styles.css">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#F7F6F2;min-height:100vh;display:flex;flex-direction:column;align-items:center}
@@ -76,21 +77,37 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 .gate-header-icon{width:36px;height:36px;background:#1B4332;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
 .gate-title{font-size:15px;font-weight:700;color:#111}
 .gate-sub{font-size:12px;color:#666;margin-top:2px}
-.gate-input{width:100%;padding:12px 14px;border:1.5px solid #DDD;border-radius:10px;font-size:14px;background:#fff;color:#111;margin-bottom:10px;outline:none}
-.gate-input:focus{border-color:#1B4332}
-.btn-report{width:100%;padding:14px;background:#1B4332;color:#fff;border:none;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer}
-.success-card{background:#E8F5E9;border:1px solid #C8E6C9;border-radius:12px;padding:16px;text-align:center;margin-top:10px}
+.custom-email-input{width:100%;padding:12px 14px;border:1.5px solid #DDD;border-radius:10px;font-size:14px;background:#fff;color:#111;margin-bottom:10px;outline:none;font-family:inherit}
+.custom-email-input:focus{border-color:#1B4332}
+.btn-report{width:100%;padding:14px;background:#1B4332;color:#fff;border:none;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;font-family:inherit}
+.success-card{background:#E8F5E9;border:1px solid #C8E6C9;border-radius:12px;padding:16px;text-align:center;margin-top:10px;display:none}
 .success-card p{font-size:14px;color:#2E7D32;font-weight:600}
 .success-card span{font-size:12px;color:#555;display:block;margin-top:4px}
-.restart-btn{width:100%;padding:13px;background:#fff;border:1.5px solid #EBEBEB;border-radius:12px;font-size:14px;font-weight:500;color:#555;cursor:pointer;margin-bottom:20px}
+.restart-btn{width:100%;padding:13px;background:#fff;border:1.5px solid #EBEBEB;border-radius:12px;font-size:14px;font-weight:500;color:#555;cursor:pointer;margin-bottom:20px;font-family:inherit}
 .ca-note{margin:0 16px 24px;padding:14px;background:#fff;border:1px solid #EBEBEB;border-radius:12px;display:flex;gap:10px;align-items:flex-start}
 .ca-avatar{width:36px;height:36px;border-radius:50%;background:#1B4332;display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;color:#fff;font-weight:700}
 .ca-text{font-size:12px;color:#555;line-height:1.6}
 .ca-text strong{color:#111;font-weight:600}
+/* Hide all Brevo default styling completely */
+.sib-form,.sib-form-container,#sib-container,.sib-form-block,
+.entry__label,.entry__specification,#sib-form-container{display:none!important}
 </style>
 </head>
 <body>
 
+<!-- BREVO HIDDEN FORM — no API key, safe to commit -->
+<div style="display:none" aria-hidden="true">
+  <form id="sib-form" method="POST"
+    action="https://9e7aac77.sibforms.com/serve/MUIFADr4In6FVnXphWX_6BMAjxwUZWa147Y32dBxTULddg8a0g9xx0xcxbRp6rqQctO6vktKHdEzwb4LJXmEBAkVwwidaL25-X3R4TQNychEsCrSjifsHvsCX3MajzKXPFwNp2YPxsJkUN5qfyuLOPkXVMZcwB2P0y6Rkyk9zQE6mKjN-j_MUKaM9JVaGFB3v-WwFxMM4zZghKw-">
+    <input type="text" id="EMAIL" name="EMAIL" value="">
+    <input type="text" name="email_address_check" value="">
+    <input type="hidden" name="locale" value="en">
+    <input type="hidden" name="html_type" value="simple">
+    <button type="submit" id="brevo-submit-btn">Submit</button>
+  </form>
+</div>
+
+<!-- TAXRAKSHA UI -->
 <div class="topbar">
   <div class="logo">
     <div class="logo-icon">
@@ -130,7 +147,7 @@ let step=0,ans=[],sel=[];
 
 function calcScore(){
   let s=0;
-  if(ans[0]===2)s+=3; else if(ans[0]===1)s+=1;
+  if(ans[0]===2)s+=3;else if(ans[0]===1)s+=1;
   const i=ans[1]||[];
   if(i.includes(1))s+=1;if(i.includes(2))s+=1;if(i.includes(4))s+=1;
   if(ans[2]===2)s+=1;if(ans[2]===3)s+=2;
@@ -143,11 +160,11 @@ function getFlags(){
   const f=[],a1=ans[1]||[],a3=ans[3]||[];
   if(ans[0]===2)f.push({t:"warn",icon:"⚠️",m:"<strong>ITR file nahi ki</strong> — yeh sabse bada red flag hai. IT Department ne 5.5 crore non-filers ko pehle hi identify kar liya hai."});
   else if(ans[0]===1)f.push({t:"info",icon:"ℹ️",m:"<strong>Late filing hui</strong> — penalty already lag chuki. Aage July 31 se pehle file karo."});
-  if(a1.includes(3))f.push({t:"warn",icon:"⚠️",m:"<strong>FD/savings interest</strong> — ₹10,000 se zyada bank interest 'Other Sources' mein declare karna zaroori hai. TDS kata bhi ho toh bhi ITR mein dikhana padta hai."});
-  if(a1.includes(1)||a1.includes(2))f.push({t:"warn",icon:"⚠️",m:"<strong>Freelance/business income</strong> — clients ne jo TDS kata hai wo Form 26AS mein hai. Agar actual income alag dikhaya toh mismatch = automatic notice."});
-  if(a3.includes(0))f.push({t:"warn",icon:"⚠️",m:"<strong>₹2 lakh+ cash spending</strong> — yeh automatically SFT mein IT Department ko report hota hai."});
-  if(a3.includes(1))f.push({t:"warn",icon:"⚠️",m:"<strong>High credit card bill</strong> — agar declared income kam aur spending zyada, lifestyle mismatch flag hota hai."});
-  if(a3.includes(2))f.push({t:"warn",icon:"⚠️",m:"<strong>Property transaction</strong> — registrar automatically IT Department ko report karta hai. Stamp duty se kam price = notice."});
+  if(a1.includes(3))f.push({t:"warn",icon:"⚠️",m:"<strong>FD/savings interest</strong> — ₹10,000 se zyada bank interest 'Other Sources' mein declare karna zaroori hai."});
+  if(a1.includes(1)||a1.includes(2))f.push({t:"warn",icon:"⚠️",m:"<strong>Freelance/business income</strong> — TDS mismatch sabse common notice reason hai. Form 26AS zaroor check karo."});
+  if(a3.includes(0))f.push({t:"warn",icon:"⚠️",m:"<strong>₹2 lakh+ cash spending</strong> — yeh automatically IT Department ko SFT mein report hota hai."});
+  if(a3.includes(1))f.push({t:"warn",icon:"⚠️",m:"<strong>High credit card bill</strong> — declared income aur spending mismatch scrutiny trigger karta hai."});
+  if(a3.includes(2))f.push({t:"warn",icon:"⚠️",m:"<strong>Property transaction</strong> — stamp duty se kam price declare karna notice ka bada reason hai."});
   if(f.length===0){
     f.push({t:"ok",icon:"✅",m:"<strong>Koi major red flag nahi mila</strong> — aapki profile clean dikh rahi hai. Bas July 31 deadline mat bhoolna."});
     f.push({t:"info",icon:"💡",m:"<strong>Ek kaam zaroor karo:</strong> Form 26AS aur AIS income tax portal pe check karo. Free hai, 5 minute lagta hai."});
@@ -193,7 +210,6 @@ function render(){
       <button class="btn-next" id="nxt" onclick="goNext()" ${sel.length===0?'disabled':''}>
         ${step===3?'Mera Result Dekhein →':'Aage →'}
       </button>
-    </div>
     </div>`;
   } else {
     const sc=calcScore(),lv=sc<=2?'LOW':sc<=5?'MEDIUM':'HIGH';
@@ -225,9 +241,9 @@ function render(){
         </div>
       </div>
       <div style="font-size:12px;color:#C62828;font-weight:600;margin-bottom:8px;">⏰ Aapki report 24 ghante mein expire ho jaati hai — abhi email dalo.</div>
-      <input class="gate-input" type="email" id="eml" placeholder="aapka@email.com">
+      <input class="custom-email-input" type="email" id="my-email" placeholder="aapka@email.com">
       <button class="btn-report" onclick="submitEmail()">Report Bhejo Mere Email Par →</button>
-      <div id="ok" style="display:none" class="success-card">
+      <div class="success-card" id="ok">
         <p>✅ Report bhej di! Inbox check karein.</p>
         <span>Spam folder bhi dekh lena</span>
       </div>
@@ -235,6 +251,9 @@ function render(){
     <div style="padding:0 16px">
       <button class="restart-btn" onclick="restart()">↩ Dobara check karein</button>
     </div>
+    <div class="ca-note">
+      <div class="ca-avatar">💬</div>
+      <div class="ca-text"><strong>Ek baat aur:</strong> Yeh tool 100% accurate guarantee nahi deta — lekin 80% notices ke reasons yahi hote hain jo yahan cover kiye hain.</div>
     </div>`;
   }
   window.scrollTo(0,0);
@@ -259,10 +278,14 @@ function goNext(){
 function goBack(){step--;sel=Array.isArray(ans[step])?[...ans[step]]:[ans[step]];render();}
 
 function submitEmail(){
-  const v=document.getElementById('eml').value;
-  if(!v||!v.includes('@')){document.getElementById('eml').style.borderColor='red';return;}
-  // REPLACE THIS with your Brevo API call:
-  // fetch('https://api.brevo.com/v3/contacts',{method:'POST',headers:{'api-key':'YOUR_KEY','Content-Type':'application/json'},body:JSON.stringify({email:v,listIds:[2]})})
+  const v=document.getElementById('my-email').value;
+  if(!v||!v.includes('@')){
+    document.getElementById('my-email').style.borderColor='red';
+    return;
+  }
+  // Safely submit to Brevo — no API key needed
+  document.getElementById('EMAIL').value=v;
+  document.getElementById('brevo-submit-btn').click();
   document.getElementById('ok').style.display='block';
   document.querySelector('.btn-report').style.display='none';
 }
